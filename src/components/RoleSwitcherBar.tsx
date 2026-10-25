@@ -24,7 +24,7 @@ export function RoleSwitcherBar() {
   };
 
   return (
-    <div className="bg-[#171717] text-[#FAF9F6] border-b border-[#2A2D2F] px-4 py-2 text-xs select-none">
+    <div className="hidden md:block bg-[#171717] text-[#FAF9F6] border-b border-[#2A2D2F] px-4 py-2 text-xs select-none">
       <div className="mx-auto max-w-[1440px] flex flex-wrap items-center justify-between gap-3">
         {/* Left: Interactive Demo Mode Tag */}
         <div className="flex items-center gap-2 flex-wrap">
