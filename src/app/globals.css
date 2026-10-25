@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --obsidian: #171717;
+    --pearl: #FAF9F6;
+    --silver-grey: #C8CBCD;
+    --silver-light: #E8EAEB;
+    --graphite: #35383A;
+    --champagne: #B7A078;
+    --border: #E2E4E6;
+    --border-dark: #2A2D2F;
+
+    --background: var(--pearl);
+    --foreground: var(--obsidian);
+
+    --font-display: var(--font-cinzel), "Cinzel", "Cormorant Garamond", Georgia, serif;
+    --font-sans: var(--font-jakarta), "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+
+    --ease-lux: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --scrim-hero: linear-gradient(90deg, rgba(23, 23, 23, 0.2) 20%, rgba(23, 23, 23, 0.8) 100%);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+}
+
+/* Custom Typography & Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.link-silver {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.link-silver::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-lux);
+}
+
+.link-silver:hover::after {
+  transform: scaleX(1);
+}
+
+.silver-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.img-zoom {
+  transition: transform 1.2s var(--ease-lux);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s var(--ease-lux), transform 0.9s var(--ease-lux);
+}
+
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 20s ease-out forwards;
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s var(--ease-lux) forwards;
+}
+
+/* Color Helper classes */
+.bg-obsidian { background-color: var(--obsidian); }
+.text-obsidian { color: var(--obsidian); }
+.bg-pearl { background-color: var(--pearl); }
+.text-pearl { color: var(--pearl); }
+.bg-graphite { background-color: var(--graphite); }
+.text-graphite { color: var(--graphite); }
+.bg-champagne { background-color: var(--champagne); }
+.text-champagne { color: var(--champagne); }
+.border-champagne { border-color: var(--champagne); }
+.bg-silver-grey { background-color: var(--silver-grey); }
+.text-silver-grey { color: var(--silver-grey); }
